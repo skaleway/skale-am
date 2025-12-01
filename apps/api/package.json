@@ -1,0 +1,32 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts"
+    },
+    "./app": {
+      "types": "./src/app.ts"
+    }
+  },
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "start": "bun run dist/index.js",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "elysia": "^1.3.3"
+  },
+  "devDependencies": {
+    "@skaleam/eslint-config": "workspace:*",
+    "@skaleam/typescript-config": "workspace:*",
+    "@types/bun": "^1.2.24",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.2"
+  }
+}
