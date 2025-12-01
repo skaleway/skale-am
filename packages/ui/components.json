@@ -11,10 +11,10 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@workspace/ui/components",
-    "utils": "@workspace/ui/lib/utils",
-    "hooks": "@workspace/ui/hooks",
-    "lib": "@workspace/ui/lib",
-    "ui": "@workspace/ui/components"
+    "components": "@skaleam/ui/components",
+    "utils": "@skaleam/ui/lib/utils",
+    "hooks": "@skaleam/ui/hooks",
+    "lib": "@skaleam/ui/lib",
+    "ui": "@skaleam/ui/components"
   }
 }

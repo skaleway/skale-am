@@ -1,3 +1,3 @@
-# `@workspace/eslint-config`
+# `@skaleam/eslint-config`
 
-Shared eslint configuration for the workspace.
+Shared eslint configuration for the skaleam.
