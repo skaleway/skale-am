@@ -1,7 +1,6 @@
 import type { InferSelectModel } from "drizzle-orm";
-import schema from "./schema.js";
+import schema from "./schema";
 
-// Auth types
 export type User = InferSelectModel<typeof schema.user>;
 export type Session = InferSelectModel<typeof schema.session>;
 export type Account = InferSelectModel<typeof schema.account>;
@@ -10,7 +9,6 @@ export type RateLimitAttempts = InferSelectModel<
   typeof schema.rateLimitAttempts
 >;
 
-// Organization types
 export type Organization = InferSelectModel<typeof schema.organization>;
 export type Member = InferSelectModel<typeof schema.member>;
 export type Invitation = InferSelectModel<typeof schema.invitation>;

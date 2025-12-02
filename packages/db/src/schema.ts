@@ -15,7 +15,7 @@ import {
   session,
   user,
   verification,
-} from "./auth-schema.js";
+} from "./auth";
 
 export const organization = pgTable("organization", {
   id: text("id").primaryKey(),
@@ -141,4 +141,4 @@ export const schema = {
 
 export default schema;
 
-export { rateLimitAttempts, user } from "./auth-schema.js";
+export { rateLimitAttempts, user } from "./auth";
