@@ -3,8 +3,8 @@ import { config } from "dotenv";
 
 config({ path: resolve(import.meta.dirname, "../../../.env") });
 
-const { default: app } = await import("./app");
+const { default: app } = await import("./app.js");
 
-export type { App } from "./app";
+export type { App } from "./app.js";
 
 export default app;
