@@ -1,0 +1,35 @@
+{
+  "name": "@skaleam/auth",
+  "main": "./dist/auth.cjs",
+  "module": "./dist/auth.mjs",
+  "types": "./dist/auth.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsdown src/auth.ts src/auth-client.ts src/utils/send-invitation-email.ts --format esm,cjs --dts -d dist --tsconfig tsconfig.build.json"
+  },
+  "exports": {
+    "./auth-client": "./dist/auth-client.mjs",
+    "./auth": "./dist/auth.mjs",
+    "./utils/send-invitation-email": "./dist/send-invitation-email.mjs"
+  },
+  "devDependencies": {
+    "@skaleam/typescript-config": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^19.0.0",
+    "tsdown": "^0.17.0-beta.5"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@skaleam/db": "workspace:^",
+    "@skaleam/env": "workspace:*",
+    "@react-email/components": "^0.0.20",
+    "@react-email/render": "^0.0.12",
+    "axios": "^1.10.0",
+    "better-auth": "^1.2.9",
+    "drizzle-orm": "^0.44.2",
+    "resend": "^4.0.1"
+  }
+}
