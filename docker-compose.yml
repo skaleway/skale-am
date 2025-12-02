@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: skaleam-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: skaleam
+      POSTGRES_PASSWORD: skaleam
+      POSTGRES_DB: skaleam
+    ports:
+      - "5438:5432"
+    volumes:
+      - skaleam_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U skaleam -d skaleam"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  skaleam_data:
