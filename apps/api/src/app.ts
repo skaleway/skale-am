@@ -1,6 +1,7 @@
-import { Elysia, t } from "elysia";
+import { Elysia } from "elysia";
 import { env } from "@skaleam/env/server";
 import { cors } from "@elysiajs/cors";
+import { routes } from "./routes";
 
 const app = new Elysia()
   .use(
@@ -16,29 +17,7 @@ const app = new Elysia()
     version: "0.0.1",
     timestamp: new Date().toISOString(),
   }))
-  .get("/health", () => ({
-    status: "healthy",
-    uptime: process.uptime(),
-  }))
-  .get("/user/:id", ({ params }) => ({
-    userId: params.id,
-    message: `User ${params.id} retrieved`,
-  }))
-  .post(
-    "/user",
-    ({ body: { age, name } }) => {
-      return {
-        name,
-        age,
-      };
-    },
-    {
-      body: t.Object({
-        name: t.String(),
-        age: t.Number(),
-      }),
-    }
-  );
+  .group("/api", (app) => app.use(routes));
 
 export type App = typeof app;
 
