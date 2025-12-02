@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import { env } from "@skaleam/env/server";
 import { cors } from "@elysiajs/cors";
-import { routes } from "./routes";
+import { routes } from "./routes/index";
 
 const app = new Elysia()
   .use(
