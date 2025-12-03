@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 import { env } from "@skaleam/env/server";
 import { cors } from "@elysiajs/cors";
 import { routes } from "./routes/index.js";
+import { betterAuthPlugin } from "./plugins/better-auth.js";
 
 const app = new Elysia()
   .use(
@@ -10,8 +11,12 @@ const app = new Elysia()
         const origin = request.headers.get("origin") ?? "";
         return env.TRUSTED_ORIGINS.includes(origin);
       },
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      credentials: true,
+      allowedHeaders: ["Content-Type", "Authorization"],
     })
   )
+  .use(betterAuthPlugin)
   .get("/", () => ({
     message: "Welcome to Skale AM API",
     version: "0.0.1",

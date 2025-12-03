@@ -1,19 +1,43 @@
 import { Elysia, t } from "elysia";
+import { betterAuthPlugin } from "../plugins/better-auth.js";
 
+/**
+ * User routes with authentication protection
+ * Uses the betterAuth macro to require authentication and inject user/session
+ */
 export const userRoutes = new Elysia({ prefix: "/users" })
-  .get("/", () => {
-    return { message: "List users endpoint" };
-  })
+  .use(betterAuthPlugin)
+  .get(
+    "/",
+    ({ user }) => {
+      return {
+        message: "List users endpoint",
+        requestedBy: user.id,
+      };
+    },
+    { auth: true }
+  )
+  .get(
+    "/me",
+    ({ user, session }) => {
+      return {
+        user,
+        session,
+      };
+    },
+    { auth: true }
+  )
   .get(
     "/:id",
-    ({ params }) => {
-      // TODO: Implement get user by ID
+    ({ params, user }) => {
       return {
         message: "Get user endpoint",
         userId: params.id,
+        requestedBy: user.id,
       };
     },
     {
+      auth: true,
       params: t.Object({
         id: t.String(),
       }),
@@ -21,15 +45,16 @@ export const userRoutes = new Elysia({ prefix: "/users" })
   )
   .put(
     "/:id",
-    ({ params, body }) => {
-      // TODO: Implement update user
+    ({ params, body, user }) => {
       return {
         message: "Update user endpoint",
         userId: params.id,
         updates: body,
+        updatedBy: user.id,
       };
     },
     {
+      auth: true,
       params: t.Object({
         id: t.String(),
       }),
@@ -41,14 +66,15 @@ export const userRoutes = new Elysia({ prefix: "/users" })
   )
   .delete(
     "/:id",
-    ({ params }) => {
-      // TODO: Implement delete user
+    ({ params, user }) => {
       return {
         message: "Delete user endpoint",
         userId: params.id,
+        deletedBy: user.id,
       };
     },
     {
+      auth: true,
       params: t.Object({
         id: t.String(),
       }),
