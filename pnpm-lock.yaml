@@ -36,13 +36,13 @@ importers:
       '@skaleam/auth':
         specifier: workspace:*
         version: link:../../packages/auth
+      '@skaleam/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       elysia:
         specifier: ^1.3.3
         version: 1.4.16(@sinclair/typebox@0.34.41)(@types/bun@1.3.3)(exact-mirror@0.2.5(@sinclair/typebox@0.34.41))(file-type@21.1.1)(openapi-types@12.1.3)(typescript@5.9.2)
     devDependencies:
-      '@skaleam/env':
-        specifier: workspace:*
-        version: link:../../packages/env
       '@skaleam/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -123,7 +123,7 @@ importers:
         specifier: ^0.0.12
         version: 0.0.12
       '@skaleam/db':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../db
       '@skaleam/env':
         specifier: workspace:*

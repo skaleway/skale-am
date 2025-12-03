@@ -2,14 +2,15 @@
   "extends": "@skaleam/typescript-config/base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "baseUrl": ".",
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@skaleam/db": ["../db/dist/index.d.ts"],
-      "@skaleam/db/*": ["../db/dist/*.d.ts"]
+      "@skaleam/db": ["../db/src/index.ts"],
+      "@skaleam/db/*": ["../db/src/*.ts"]
     },
     "declaration": true,
     "declarationDir": "dist"
