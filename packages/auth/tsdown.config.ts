@@ -1,8 +1,9 @@
 import { defineConfig } from "tsdown";
-import path from "path";
+import { resolve } from "path";
 
-const dbPath = path.resolve(__dirname, "../db/src");
-const envPath = path.resolve(__dirname, "../env");
+const root = process.cwd();
+const dbPath = resolve(root, "../db/src");
+const envPath = resolve(root, "../env");
 
 export default defineConfig({
   entry: [
@@ -16,9 +17,9 @@ export default defineConfig({
   tsconfig: "tsconfig.build.json",
   noExternal: [/@skaleam\/.*/],
   alias: {
-    "@skaleam/db/schema": `${dbPath}/schema.ts`,
-    "@skaleam/db": `${dbPath}/index.ts`,
-    "@skaleam/env/server": `${envPath}/server.ts`,
-    "@skaleam/env/client": `${envPath}/client.ts`,
+    "@skaleam/db/schema": resolve(dbPath, "schema.ts"),
+    "@skaleam/db": resolve(dbPath, "index.ts"),
+    "@skaleam/env/server": resolve(envPath, "server.ts"),
+    "@skaleam/env/client": resolve(envPath, "client.ts"),
   },
 });
