@@ -22,7 +22,7 @@ export const auth = betterAuth({
   }),
 
   trustedOrigins: [env.FRONTEND_URL, env.BACKEND_URL],
-  appName: "Notpadd",
+  appName: "Skaleam",
   socialProviders: {
     google: {
       clientId: env.GOOGLE_CLIENT_ID,

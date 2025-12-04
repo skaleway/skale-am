@@ -7,7 +7,7 @@ import { auth } from "@skaleam/auth/auth";
  * - Provides a macro for protected routes that injects user and session
  */
 export const betterAuthPlugin = new Elysia({ name: "better-auth" })
-  .mount("/api/auth", auth.handler)
+  .mount(auth.handler)
   .macro({
     auth: {
       async resolve({ status, request: { headers } }) {
